@@ -1,6 +1,7 @@
 {
   "name": "ember-linkify",
   "version": "0.0.4",
+  "description": "Linkify urls in an Ember app with a helper that leverages the Handlebars escapeExpression function to ensure the links are safe.",
   "directories": {
     "doc": "doc",
     "test": "tests"
