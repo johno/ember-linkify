@@ -12,7 +12,6 @@ Integrates with [ember-cli](http://ember-cli.com).
 
 ```
 npm i --save-dev ember-linkify
-ember g ember-linkify
 ```
 
 ## Usage
