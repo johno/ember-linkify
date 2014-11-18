@@ -20,12 +20,7 @@ Use the helper:
 
 ```hbs
 {{linkify 'Here is a link: https://google.com and some attempted XSS <script>alert("xss!");</script>'}}
-```
-
-The proposed usage of the component, which is coming soon:
-
-```hbs
-{{linkify-component text=descriptionText}}
+{{! => 'Here is a link: <a href="https://google.com">https://google.com</a> and some attempted XSS &lt;script&gt;alert(&quot;xss!&quot;);&lt;/script&gt;'}}
 ```
 
 ## Development
