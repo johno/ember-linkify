@@ -23,3 +23,8 @@ test('it should not allow script tags because bad', function() {
   var result = linkify('<script>alert("oh noes!");</script>').toString().trim();
   equal(result, '&lt;script&gt;alert(&quot;oh noes!&quot;);&lt;/script&gt;');
 });
+
+test('it should not link other attempted bad urls', function() {
+  var result = linkify('http://javascript:alert(1)').toString().trim();
+  equal(result, 'http://javascript:alert(1)');
+});
