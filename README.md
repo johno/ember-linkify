@@ -16,11 +16,26 @@ npm i --save-dev ember-linkify
 
 ## Usage
 
-Use the helper:
+```hbs
+{{linkify post.description}}
+```
+
+```hbs
+{{linkify commentText}}
+```
+
+Use the helper with a raw string:
 
 ```hbs
 {{linkify 'Here is a link: https://google.com and some attempted XSS <script>alert("xss!");</script>'}}
 {{! => 'Here is a link: <a href="https://google.com">https://google.com</a> and some attempted XSS &lt;script&gt;alert(&quot;xss!&quot;);&lt;/script&gt;'}}
+```
+
+Or with a variable bound to an input:
+
+```hbs
+{{textarea value=text placeholder='Enter some text with a url'}}
+{{linkify text}}
 ```
 
 ## Development
