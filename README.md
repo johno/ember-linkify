@@ -10,6 +10,14 @@ Integrates with [ember-cli](http://ember-cli.com).
 
 ## Installation
 
+With `ember-cli@0.1.5` or later:
+
+```
+ember install:addon ember-linkify
+```
+
+Older `ember-cli` versions:
+
 ```
 npm i --save-dev ember-linkify
 ```
