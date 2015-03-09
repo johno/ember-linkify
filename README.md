@@ -6,8 +6,6 @@ Linkify urls in an Ember app with a helper that uses a tested
 [url-regex](https://github.com/kevva/url-regex) and Handlebars `Utils.escapeExpression`
 to ensure links are safe.
 
-Integrates with [ember-cli](http://ember-cli.com).
-
 ## Installation
 
 With `ember-cli@0.1.5` or later:
