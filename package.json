@@ -1,6 +1,6 @@
 {
   "name": "ember-linkify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Linkify urls in strings, safely, with an Ember helper.",
   "directories": {
     "doc": "doc",

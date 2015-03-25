@@ -1,4 +1,4 @@
-# ember-linkify [![Build Status](https://travis-ci.org/johnotander/ember-linkify.svg?branch=master)](https://travis-ci.org/johnotander/ember-linkify)
+# ember-linkify [![Build Status](https://travis-ci.org/johnotander/ember-linkify.svg?branch=master)](https://travis-ci.org/johnotander/ember-linkify) [![Ember Observer Score](http://emberobserver.com/badges/ember-linkify.svg)](http://emberobserver.com/addons/ember-linkify)
 
 Linkify urls in an Ember app with a helper that uses a tested
 [url-regex](https://github.com/kevva/url-regex) and Handlebars `Utils.escapeExpression`
