@@ -7,12 +7,12 @@ module('LinkifyHelper');
 
 test('it should turn a url into a link', function(assert) {
   var result = linkify('My link: http://google.com').toString().trim();
-  assert.equal(result, 'My link: <a href="http://google.com">http://google.com</a>');
+  assert.equal(result, 'My link: <a href="http://google.com" target="_self">http://google.com</a>');
 });
 
 test('it should turn a url with www. into a link', function(assert) {
   var result = linkify('www.johnotander.com').toString().trim();
-  assert.equal(result, '<a href="www.johnotander.com">www.johnotander.com</a>');
+  assert.equal(result, '<a href="www.johnotander.com" target="_self">www.johnotander.com</a>');
 });
 
 test('it should escape html', function(assert) {
@@ -28,4 +28,9 @@ test('it should not allow script tags because bad', function(assert) {
 test('it should not link other attempted bad urls', function(assert) {
   var result = linkify('http://javascript:alert(1)').toString().trim();
   assert.equal(result, 'http://javascript:alert(1)');
+});
+
+test('it should turn a url into a link with a target of "_blank"', function(assert) {
+  var result = linkify("My link: http://google.com", "_blank").toString().trim();
+  assert.equal(result, 'My link: <a href="http://google.com" target="_blank">http://google.com</a>');
 });
