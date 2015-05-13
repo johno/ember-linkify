@@ -12,7 +12,7 @@ test('it should turn a url into a link', function(assert) {
 
 test('it should turn a url with www. into a link', function(assert) {
   var result = linkify('www.johnotander.com').toString().trim();
-  assert.equal(result, '<a href="www.johnotander.com" target="_self">www.johnotander.com</a>');
+  assert.equal(result, '<a href="//www.johnotander.com" target="_self">www.johnotander.com</a>');
 });
 
 test('it should escape html', function(assert) {

@@ -6,7 +6,13 @@ export function linkify(textToLinkify, windowTarget) {
   textToLinkify = Ember.Handlebars.Utils.escapeExpression(textToLinkify);
 
   textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
-    return ' <a href="' + s.trim() + '" target="'+windowTarget+'">' + s.trim() + '</a> ';
+    var url;
+    if(s.trim().match(/^www\./ig)) {
+      url = '//' + s.trim();
+    } else {
+      url = s.trim();
+    }
+    return ' <a href="' + url + '" target="'+windowTarget+'">' + s.trim() + '</a> ';
   });
 
   return new Ember.Handlebars.SafeString(textToLinkify);
