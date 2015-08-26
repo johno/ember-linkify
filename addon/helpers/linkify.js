@@ -18,4 +18,4 @@ export function linkify(textToLinkify, windowTarget) {
   return new Ember.Handlebars.SafeString(textToLinkify);
 }
 
-export default Ember.Handlebars.makeBoundHelper(linkify);
+export default Ember.Helper.helper(linkify);
