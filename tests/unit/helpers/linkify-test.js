@@ -1,6 +1,6 @@
 import {
   linkify
-} from 'ember-linkify/helpers/linkify';
+} from '../../../helpers/linkify';
 import { module, test } from 'qunit';
 
 module('LinkifyHelper');
