@@ -3,7 +3,7 @@ import {
 } from '../../../helpers/linkify';
 import { module, test } from 'qunit';
 
-module('LinkifyHelper');
+module('Unit | Helper | linkify');
 
 test('it should turn a url into a link', function(assert) {
   var result = linkify('My link: http://google.com').toString().trim();
