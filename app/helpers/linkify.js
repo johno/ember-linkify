@@ -1,1 +1,2 @@
-export { default, linkify } from 'ember-linkify/helpers/linkify';
+import Linkify from 'ember-linkify/helpers/linkify';
+export default Linkify;
