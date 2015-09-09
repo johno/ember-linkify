@@ -12,7 +12,7 @@ export function linkify(textToLinkify, windowTarget) {
     } else {
       url = s.trim();
     }
-    return ' <a href="' + url + '" target="'+windowTarget+'">' + s.trim() + '</a> ';
+    return ' <a href="' + url + '" target="' + windowTarget + '">' + s.trim() + '</a> ';
   });
 
   return Ember.String.htmlSafe(textToLinkify);
