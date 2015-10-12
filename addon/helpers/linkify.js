@@ -12,10 +12,10 @@ export function linkify(textToLinkify, windowTarget) {
     } else {
       url = s.trim();
     }
-    return ' <a href="' + url + '" target="'+windowTarget+'">' + s.trim() + '</a> ';
+    return ' <a href="' + url + '" target="' + windowTarget + '">' + s.trim() + '</a> ';
   });
 
-  return new Ember.Handlebars.SafeString(textToLinkify);
+  return Ember.String.htmlSafe(textToLinkify);
 }
 
-export default Ember.Handlebars.makeBoundHelper(linkify);
+export default Ember.Helper.helper(linkify);
