@@ -6,16 +6,8 @@ to ensure links are safe.
 
 ## Installation
 
-With `ember-cli@0.1.5` or later:
-
 ```
-ember install:addon ember-linkify
-```
-
-Older `ember-cli` versions:
-
-```
-npm i --save-dev ember-linkify
+ember install ember-linkify
 ```
 
 ## Usage
@@ -28,14 +20,14 @@ npm i --save-dev ember-linkify
 {{linkify commentText}}
 ```
 
-Use the helper with a raw string:
+##### Use the helper with a raw string
 
 ```hbs
 {{linkify 'Here is a link: https://google.com and some attempted XSS <script>alert("xss!");</script>'}}
 {{! => 'Here is a link: <a href="https://google.com">https://google.com</a> and some attempted XSS &lt;script&gt;alert(&quot;xss!&quot;);&lt;/script&gt;'}}
 ```
 
-Or with a variable bound to an input:
+##### Or with a variable bound to an input
 
 ```hbs
 {{textarea value=text placeholder='Enter some text with a url'}}
@@ -78,4 +70,6 @@ MIT
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-Crafted with <3 by [John Otander](http://johnotander.com)([@4lpine](https://twitter.com/4lpine)).
+***
+
+> Crafted with <3 by [John Otander](http://johnotander.com)([@4lpine](https://twitter.com/4lpine)).
