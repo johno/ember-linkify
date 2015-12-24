@@ -1,6 +1,6 @@
 # ember-linkify [![Build Status](https://travis-ci.org/johnotander/ember-linkify.svg?branch=master)](https://travis-ci.org/johnotander/ember-linkify) [![Ember Observer Score](http://emberobserver.com/badges/ember-linkify.svg)](http://emberobserver.com/addons/ember-linkify)
 
-Linkify urls in an Ember app with a helper that uses a tested
+Linkify URLs in an Ember app with a helper that uses a tested
 [url-regex](https://github.com/kevva/url-regex) and Handlebars `Utils.escapeExpression`
 to ensure links are safe.
 
@@ -45,7 +45,7 @@ ember install ember-linkify
 ### Running
 
 * `ember server`
-* Visit your app at http://localhost:4200.
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests
 
@@ -56,7 +56,7 @@ ember install ember-linkify
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using `ember-cli`, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
 ## License
 
