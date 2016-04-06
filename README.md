@@ -34,6 +34,14 @@ ember install ember-linkify
 {{linkify text}}
 ```
 
+##### You can specify options to the helper such as 'urlLength' which shortens the URL by 'urlLength' and add 3 dots to the end 
+
+
+```hbs
+{{linkify text urlLength=30}}
+```
+
+
 ## Development
 
 ### Installation
