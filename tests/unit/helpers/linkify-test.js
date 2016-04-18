@@ -10,6 +10,11 @@ test('it should turn a url into a link', function(assert) {
   assert.equal(result, 'My link: <a href="http://google.com" target="_self">http://google.com</a>');
 });
 
+test('it should turn a ip address into a link', function(assert) {
+  var result = linkify(['My link: https://62.123.123.123/test and some more text']).toString().trim();
+  assert.equal(result, 'My link: <a href="https://62.123.123.123/test" target="_self">https://62.123.123.123/test</a> and some more text');
+});
+
 test('it should turn a url with www. into a link', function(assert) {
   var result = linkify(['www.johnotander.com']).toString().trim();
   assert.equal(result, '<a href="//www.johnotander.com" target="_self">www.johnotander.com</a>');
