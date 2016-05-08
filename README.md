@@ -42,6 +42,12 @@ ember install ember-linkify
 ```
 
 
+##### Also use options to specify attributes you want to add to the generated anchor tags. Currently, "rel" is the only recognized attribute.
+
+```hbs
+{{linkify text rel='nofollow'}}
+```
+
 ## Development
 
 ### Installation

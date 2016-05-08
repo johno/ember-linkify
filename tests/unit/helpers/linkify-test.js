@@ -47,3 +47,11 @@ test('it should shorten a url by specified url length and adds 3 dots to the end
   var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
   assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emb...</a>' );
 });
+
+test('it should turn a url into a link with a rel of "noopener"', function(assert) {
+  var options = {
+    rel : 'noopener'
+  };
+  var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank" rel="noopener">http://emberjs.com/</a>' );
+});
