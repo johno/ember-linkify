@@ -1,17 +1,16 @@
 import Ember from 'ember';
 import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
 
-var ALLOWED_ATTRIBUTE_NAMES = [ 'rel' ];
+const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class' ];
 
 export function linkify( params, options ) {
-  
-  var textToLinkify = Ember.Handlebars.Utils.escapeExpression(params[0]);
-  var windowTarget = params[1] || "_self";
-  var sharedAttributes = opts2attrs( options );
+  let textToLinkify      = Ember.Handlebars.Utils.escapeExpression(params[0]);
+  const windowTarget     = params[1] || "_self";
+  const sharedAttributes = opts2attrs( options );
 
   textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
-    var url;
-    var displayText = s.trim();
+    let url;
+    let displayText = s.trim();
 
     if(s.trim().match(/^www\./ig)) {
       url = '//' + s.trim();
@@ -20,10 +19,10 @@ export function linkify( params, options ) {
     }
 
     if( options && options.urlLength &&  options.urlLength > 0 ) {
-      displayText = shortenUrl( displayText, options.urlLength ); 
-    } 
+      displayText = shortenUrl( displayText, options.urlLength );
+    }
 
-    return ' <a href="' + url + '" target="' + windowTarget + '"' + sharedAttributes + '>' + displayText + '</a> ';
+    return ` <a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a> `;
   });
 
   return Ember.String.htmlSafe(textToLinkify);
@@ -32,15 +31,16 @@ export function linkify( params, options ) {
 export default Ember.Helper.helper(linkify);
 
 function opts2attrs( options ) {
-  var stringOfAttributes = '';
+  const stringOfAttributes = [''];
 
-  if( typeof options === 'object' ) {
-    for( var i = ALLOWED_ATTRIBUTE_NAMES.length - 1, attributeName = ALLOWED_ATTRIBUTE_NAMES[ i ]; i > -1; i-- ) {
+  if( Ember.typeOf(options) === 'object' ) {
+    for (let i = 0; i < ALLOWED_ATTRIBUTE_NAMES.length; i++) {
+      const attributeName = ALLOWED_ATTRIBUTE_NAMES[i];
       if( attributeName in options ) {
-        stringOfAttributes += ' ' + attributeName + '="' + options[ attributeName ] + '"';
+        stringOfAttributes.push(`${attributeName}="${options[attributeName]}"`);
       }
     }
   }
 
-  return stringOfAttributes;
+  return stringOfAttributes.join(' ');
 }
