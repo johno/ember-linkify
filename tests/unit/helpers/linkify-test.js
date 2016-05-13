@@ -55,3 +55,20 @@ test('it should turn a url into a link with a rel of "noopener"', function(asser
   var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
   assert.equal(result , '<a href="http://emberjs.com/" target="_blank" rel="noopener">http://emberjs.com/</a>' );
 });
+
+test('it should turn a url into a link with a class of "amilkey"', function(assert) {
+  var options = {
+    class : 'amilkey'
+  };
+  var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank" class="amilkey">http://emberjs.com/</a>' );
+});
+
+test('it should turn a url into a link with a class of "amilkey" and a rel of "noopener""', function(assert) {
+  var options = {
+    rel   : 'noopener',
+    class : 'amilkey'
+  };
+  var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank" rel="noopener" class="amilkey">http://emberjs.com/</a>' );
+});
