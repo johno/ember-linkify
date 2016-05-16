@@ -48,6 +48,19 @@ test('it should shorten a url by specified url length and adds 3 dots to the end
   assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emb...</a>' );
 });
 
+test('it should shorten a url by specified url length and adds 3 dots to the end in long url only', function(assert) {
+  const longUrl  = 'https://guides.emberjs.com/v2.5.0/templates/writing-helpers/';
+  const shortUrl = 'http://emberjs.com/';
+  const options  = {
+    urlLength : 20
+  };
+  const resultLongUrl = linkify([longUrl, "_blank"] , options ).toString().trim();
+  assert.equal(resultLongUrl , '<a href="https://guides.emberjs.com/v2.5.0/templates/writing-helpers/" target="_blank">https://guides.ember...</a>' );
+
+  const resultShortUrl = linkify([shortUrl, "_blank"] , options ).toString().trim();
+  assert.equal(resultShortUrl, '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a>' );
+});
+
 test('it should turn a url into a link with a rel of "noopener"', function(assert) {
   var options = {
     rel : 'noopener'

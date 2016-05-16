@@ -8,7 +8,7 @@ function urlRegex () {
 // Shortens the URL and adds three dots to the end
 function shortenUrl ( url , length ) {
 
-  if( !Ember.isBlank( url ) ) {
+  if( !Ember.isBlank( url ) && url.length > length) {
       url = url.substr( 0 , length ) + "...";
   }
 
