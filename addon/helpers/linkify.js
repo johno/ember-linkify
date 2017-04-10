@@ -26,7 +26,7 @@ export function linkify( params, options ) {
       displayText = shortenUrl( displayText, options.urlLength );
     }
 
-    return ` <a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a> `;
+    return `<a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a>`;
   });
 
   return Ember.String.htmlSafe(textToLinkify);

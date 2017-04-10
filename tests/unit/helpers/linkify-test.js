@@ -99,3 +99,8 @@ test('it should turn a url into a link with a class of "amilkey" and a rel of "n
   var result = linkify(["http://emberjs.com/", "_blank"] , options ).toString().trim();
   assert.equal(result , '<a href="http://emberjs.com/" target="_blank" rel="noopener" class="amilkey">http://emberjs.com/</a>' );
 });
+
+test('it should turn a space delimited list of urls into seperate links', function(assert) {
+  var result = linkify(['My link: http://google.com http://bing.com www.altavista.com']).toString().trim();
+  assert.equal(result, 'My link: <a href="http://google.com" target="_self">http://google.com</a> <a href="http://bing.com" target="_self">http://bing.com</a> <a href="//www.altavista.com" target="_self">www.altavista.com</a>');
+});
