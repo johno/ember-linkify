@@ -61,6 +61,20 @@ test('it should shorten a url by specified url length and adds 3 dots to the end
   assert.equal(resultShortUrl, '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a>' );
 });
 
+test('it should use the default scheme when no scheme is specified', function(assert) {
+  const string = 'This link is missing a scheme: www.foo.com';
+  const options = { defaultScheme: 'http' };
+  const result = linkify([string], options).toString().trim();
+  assert.equal(result, 'This link is missing a scheme: <a href="http://www.foo.com" target="_self">www.foo.com</a>');
+});
+
+test('default scheme should not override an existing scheme', function(assert) {
+  const string = 'This link already has a scheme: https://www.foo.com';
+  const options = { defaultScheme: 'http' };
+  const result = linkify([string], options).toString().trim();
+  assert.equal(result, 'This link already has a scheme: <a href="https://www.foo.com" target="_self">https://www.foo.com</a>');
+});
+
 test('it should turn a url into a link with a rel of "noopener"', function(assert) {
   var options = {
     rel : 'noopener'

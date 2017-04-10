@@ -13,7 +13,11 @@ export function linkify( params, options ) {
     let displayText = s.trim();
 
     if(s.trim().match(/^www\./ig)) {
-      url = '//' + s.trim();
+      if (options && options.defaultScheme) {
+        url = options.defaultScheme + '://' + s.trim();
+      } else {
+        url = '//' + s.trim();
+      }
     } else {
       url = s.trim();
     }
