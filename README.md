@@ -41,6 +41,13 @@ ember install ember-linkify
 {{linkify text urlLength=30}}
 ```
 
+##### The 'defaultScheme' option specifies a scheme to use for URLs that don’t already have one.
+
+For instance, the following will ensure that the `https` scheme is used for the created link:
+
+```hbs
+{{linkify 'Link without a scheme: www.foo.com' defaultScheme='https'}}
+```
 
 ##### Also use options to specify attributes you want to add to the generated anchor tags. Currently, "rel" is the only recognized attribute.
 
