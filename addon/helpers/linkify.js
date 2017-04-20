@@ -1,14 +1,15 @@
 import Ember from 'ember';
-import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
+import { urlRegex , shortenUrl, delimiterBuilder } from 'ember-linkify/utils/url-regex';
 
 const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class' ];
 
-export function linkify( params, options ) {
+export function linkify( params, options={} ) {
   let textToLinkify      = Ember.Handlebars.Utils.escapeExpression(params[0]);
   const windowTarget     = params[1] || "_self";
   const sharedAttributes = opts2attrs( options );
+  const urlParser        = options.delimiter ? delimiterBuilder(options.delimiter.trim()) : urlRegex();
 
-  textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
+  textToLinkify = textToLinkify.replace(urlParser, function (s) {
     let url;
     let displayText = s.trim();
 
