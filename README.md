@@ -83,8 +83,7 @@ For instance, the following will ensure that the `https` scheme is used for the 
 
 ### Building
 
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+* `ember build`
 
 For more information on using `ember-cli`, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
