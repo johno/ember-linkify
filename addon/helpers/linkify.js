@@ -1,3 +1,6 @@
+import { typeOf } from '@ember/utils';
+import { helper } from '@ember/component/helper';
+import { htmlSafe } from '@ember/string';
 import Ember from 'ember';
 import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
 
@@ -29,15 +32,15 @@ export function linkify( params, options ) {
     return `<a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a>`;
   });
 
-  return Ember.String.htmlSafe(textToLinkify);
+  return htmlSafe(textToLinkify);
 }
 
-export default Ember.Helper.helper(linkify);
+export default helper(linkify);
 
 function opts2attrs( options ) {
   const stringOfAttributes = [''];
 
-  if( Ember.typeOf(options) === 'object' ) {
+  if( typeOf(options) === 'object' ) {
     for (let i = 0; i < ALLOWED_ATTRIBUTE_NAMES.length; i++) {
       const attributeName = ALLOWED_ATTRIBUTE_NAMES[i];
       if( attributeName in options ) {
