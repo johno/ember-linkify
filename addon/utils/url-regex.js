@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { isBlank } from '@ember/utils';
 
 // URL regex courtesy of https://github.com/kevva/url-regex
 function urlRegex () {
@@ -8,7 +8,7 @@ function urlRegex () {
 // Shortens the URL and adds three dots to the end
 function shortenUrl ( url , length ) {
 
-  if( !Ember.isBlank( url ) && url.length > length) {
+  if( !isBlank( url ) && url.length > length) {
       url = url.substr( 0 , length ) + "...";
   }
 
