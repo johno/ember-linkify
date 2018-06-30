@@ -4,7 +4,8 @@ Linkify URLs in an Ember app with a helper that uses a tested
 [url-regex](https://github.com/kevva/url-regex) and Handlebars `Utils.escapeExpression`
 to ensure links are safe.
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
 ```
 ember install ember-linkify
@@ -66,8 +67,8 @@ For instance, the following will ensure that the `https` scheme is used for the 
 ### Installation
 
 * `git clone` this repository
+* `cd my-addon`
 * `npm install`
-* `bower install`
 
 ### Running
 
@@ -78,10 +79,12 @@ For instance, the following will ensure that the `https` scheme is used for the 
 
 * `ember test`
 * `ember test --server`
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
 ### Building
 
-* `ember build`
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using `ember-cli`, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
