@@ -15,6 +15,16 @@ test('it should turn a ip address into a link', function(assert) {
   assert.equal(result, 'My link: <a href="https://62.123.123.123/test" target="_self">https://62.123.123.123/test</a> and some more text');
 });
 
+test('it should turn a url with multiple slashes into a link', function(assert) {
+  var result = linkify(['My link: http://google.com/my/name//is///slimshady and some more text']).toString().trim();
+  assert.equal(result, 'My link: <a href="http://google.com/my/name//is///slimshady" target="_self">http://google.com/my/name//is///slimshady</a> and some more text');
+});
+
+test('it should turn a url with encoded characters into a link', function(assert) {
+  var result = linkify(['My link: https://www.google.ca/maps/search/oops%2Bi%2Bdid%2Bit%2Bagain/ and some more text']).toString().trim();
+  assert.equal(result, 'My link: <a href="https://www.google.ca/maps/search/oops%2Bi%2Bdid%2Bit%2Bagain/" target="_self">https://www.google.ca/maps/search/oops%2Bi%2Bdid%2Bit%2Bagain/</a> and some more text');
+});
+
 test('it should turn a url with www. into a link', function(assert) {
   var result = linkify(['www.johnotander.com']).toString().trim();
   assert.equal(result, '<a href="//www.johnotander.com" target="_self">www.johnotander.com</a>');
@@ -103,4 +113,41 @@ test('it should turn a url into a link with a class of "amilkey" and a rel of "n
 test('it should turn a space delimited list of urls into seperate links', function(assert) {
   var result = linkify(['My link: http://google.com http://bing.com www.altavista.com']).toString().trim();
   assert.equal(result, 'My link: <a href="http://google.com" target="_self">http://google.com</a> <a href="http://bing.com" target="_self">http://bing.com</a> <a href="//www.altavista.com" target="_self">www.altavista.com</a>');
+});
+
+test('it should turn a comma delimited list of urls without slashes into seperate links by default', function(assert) {
+  var result = linkify(['My link: http://google.com, http://bing.com,www.altavista.com']).toString().trim();
+  assert.equal(result, 'My link: <a href="http://google.com" target="_self">http://google.com</a>, <a href="http://bing.com" target="_self">http://bing.com</a>,<a href="//www.altavista.com" target="_self">www.altavista.com</a>');
+});
+
+test('it should turn a comma delimited list of urls with slashes into seperate links', function(assert) {
+  var options = {
+    delimiter : ","
+  };
+  var result = linkify(["http://emberjs.com/,http://emberjs.com/really", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a>,<a href="http://emberjs.com/really" target="_blank">http://emberjs.com/really</a>' );
+});
+
+test('it should turn a period delimited list of urls with slashes into seperate links', function(assert) {
+  var options = {
+    delimiter : "."
+  };
+  var result = linkify(["http://emberjs.com/.http://emberjs.com/really.www.yes.really/", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a>.<a href="http://emberjs.com/really" target="_blank">http://emberjs.com/really</a>.<a href="//www.yes.really/" target="_blank">www.yes.really/</a>' );
+});
+
+test('it should turn a space delimited list of urls with slashes into seperate links even with delimiter . passed', function(assert) {
+  var options = {
+    delimiter : "."
+  };
+  var result = linkify(["http://emberjs.com/ http://emberjs.com/really www.yes.really/. www.yes.seriously", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a> <a href="http://emberjs.com/really" target="_blank">http://emberjs.com/really</a> <a href="//www.yes.really/" target="_blank">www.yes.really/</a>. <a href="//www.yes.seriously" target="_blank">www.yes.seriously</a>' );
+});
+
+test('it should turn a space delimited list of urls with slashes into seperate links even with delimiter , passed', function(assert) {
+  var options = {
+    delimiter : ","
+  };
+  var result = linkify(["http://emberjs.com/ http://emberjs.com/really www.yes.really/, www.yes.seriously", "_blank"] , options ).toString().trim();
+  assert.equal(result , '<a href="http://emberjs.com/" target="_blank">http://emberjs.com/</a> <a href="http://emberjs.com/really" target="_blank">http://emberjs.com/really</a> <a href="//www.yes.really/" target="_blank">www.yes.really/</a>, <a href="//www.yes.seriously" target="_blank">www.yes.seriously</a>' );
 });
