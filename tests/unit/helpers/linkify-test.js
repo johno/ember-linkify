@@ -1,6 +1,7 @@
 import {
   linkify
 } from 'ember-linkify/helpers/linkify';
+import Ember from 'ember';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | linkify');
@@ -66,6 +67,15 @@ test('it should use the default scheme when no scheme is specified', function(as
   const options = { defaultScheme: 'http' };
   const result = linkify([string], options).toString().trim();
   assert.equal(result, 'This link is missing a scheme: <a href="http://www.foo.com" target="_self">www.foo.com</a>');
+});
+
+test('it should truncate url with query string', function(assert) {
+  const originalUrl = 'https://www.google.com/search?q=ember+linkify&oq=ember+linkify&aqs=chrome..69i57j69i60l3j0.7689j0j4&sourceid=chrome&ie=UTF-8'
+  const expectedText = Ember.Handlebars.Utils.escapeExpression(originalUrl.slice(0,50));
+  const result = linkify([originalUrl], {
+    urlLength: 50
+  }).toString().trim();
+  assert.equal(result, `<a href="${Ember.Handlebars.Utils.escapeExpression(originalUrl)}" target="_self">${expectedText}...</a>`);
 });
 
 test('default scheme should not override an existing scheme', function(assert) {

@@ -7,11 +7,11 @@ import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
 const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class' ];
 
 export function linkify( params, options ) {
-  let textToLinkify      = Ember.Handlebars.Utils.escapeExpression(params[0]);
-  const windowTarget     = params[1] || "_self";
-  const sharedAttributes = opts2attrs( options );
+  let textToLinkifyOriginal = params[0];
+  const windowTarget        = params[1] || "_self";
+  const sharedAttributes    = opts2attrs( options );
 
-  textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
+  let textToLinkify = textToLinkifyOriginal.replace(urlRegex(), function (s) {
     let url;
     let displayText = s.trim();
 
@@ -29,8 +29,18 @@ export function linkify( params, options ) {
       displayText = shortenUrl( displayText, options.urlLength );
     }
 
+    // make the url and display text html friendly
+    url = Ember.Handlebars.Utils.escapeExpression(url);
+    displayText = Ember.Handlebars.Utils.escapeExpression(displayText)
+
     return `<a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a>`;
   });
+
+  // if no urls were found, then we escape the entire input, this prevents things like <script> from being
+  // injected
+  if (textToLinkifyOriginal === textToLinkify) {
+    textToLinkify = Ember.Handlebars.Utils.escapeExpression(textToLinkifyOriginal);
+  }
 
   return htmlSafe(textToLinkify);
 }
