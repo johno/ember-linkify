@@ -4,11 +4,10 @@ import { htmlSafe } from '@ember/string';
 import Ember from 'ember';
 import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
 
-const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class' ];
+const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class', 'target' ];
 
 export function linkify( params, options ) {
   let textToLinkify      = Ember.Handlebars.Utils.escapeExpression(params[0]);
-  const windowTarget     = params[1] || "_self";
   const sharedAttributes = opts2attrs( options );
 
   textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
@@ -29,7 +28,7 @@ export function linkify( params, options ) {
       displayText = shortenUrl( displayText, options.urlLength );
     }
 
-    return `<a href="${url}" target="${windowTarget}"${sharedAttributes}>${displayText}</a>`;
+    return `<a href="${url}"${sharedAttributes}>${displayText}</a>`;
   });
 
   return htmlSafe(textToLinkify);
