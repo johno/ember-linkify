@@ -53,7 +53,7 @@ For instance, the following will ensure that the `https` scheme is used for the 
 ##### Also use options to specify attributes you want to add to the generated anchor tags. Currently, "target", "rel" and "class" are the only recognized attributes.
 
 ```hbs
-{{linkify text target="_blank" rel='nofollow' class='external-link'}}
+{{linkify text target='_blank' rel='nofollow' class='external-link'}}
 ```
 
 ## Development
