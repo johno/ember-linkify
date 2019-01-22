@@ -50,16 +50,10 @@ For instance, the following will ensure that the `https` scheme is used for the 
 {{linkify 'Link without a scheme: www.foo.com' defaultScheme='https'}}
 ```
 
-##### Also use options to specify attributes you want to add to the generated anchor tags. Currently, "rel" and "class" are the only recognized attributes.
+##### Also use options to specify attributes you want to add to the generated anchor tags. Currently, "target", "rel" and "class" are the only recognized attributes.
 
 ```hbs
-{{linkify text rel='nofollow' class='external-link'}}
-```
-
-##### You can also set the target attribute for the generated anchor tag by passing in a second parameter.
-
-```hbs
-{{linkify text target rel='nofollow'}}
+{{linkify text target='_blank' rel='nofollow' class='external-link'}}
 ```
 
 ## Development
