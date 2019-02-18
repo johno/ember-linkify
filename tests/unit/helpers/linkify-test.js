@@ -108,3 +108,8 @@ test('it should turn a space delimited list of urls into seperate links', functi
   var result = linkify(['My link: http://google.com http://bing.com www.altavista.com']).toString().trim();
   assert.equal(result, 'My link: <a href="http://google.com">http://google.com</a> <a href="http://bing.com">http://bing.com</a> <a href="//www.altavista.com">www.altavista.com</a>');
 });
+
+test('it should properly handle fragments without leading slashes', function(assert) {
+  var result = linkify(['My link: http://some.website.com#fragment']).toString().trim();
+  assert.equal(result, 'My link: <a href="http://some.website.com#fragment">http://some.website.com#fragment</a>');
+});
