@@ -1,6 +1,6 @@
 {
   "name": "ember-linkify",
-  "version": "4.1.2",
+  "version": "5.0.0",
   "description": "Linkify urls in strings, safely",
   "keywords": [
     "linkify",
