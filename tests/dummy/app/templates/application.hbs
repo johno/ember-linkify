@@ -1,6 +1,8 @@
+{{page-title "Linkify"}}
+
 <h1>Linkify</h1>
 
-{{textarea value=text placeholder='Enter some text with a url'}} <br>
-{{linkify text }}
+<Textarea @value={{this.text}} placeholder="Enter some text with a url" aria-labelledby="linkify-text"></Textarea>
+<p id="linkify-text">{{linkify this.text}}</p>
 
 {{outlet}}

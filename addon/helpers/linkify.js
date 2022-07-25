@@ -2,19 +2,19 @@ import { typeOf } from '@ember/utils';
 import { helper } from '@ember/component/helper';
 import { htmlSafe } from '@ember/string';
 import Ember from 'ember';
-import { urlRegex , shortenUrl } from 'ember-linkify/utils/url-regex';
+import { urlRegex, shortenUrl } from 'ember-linkify/utils/url-regex';
 
-const ALLOWED_ATTRIBUTE_NAMES = [ 'rel', 'class', 'target' ];
+const ALLOWED_ATTRIBUTE_NAMES = ['rel', 'class', 'target'];
 
-export function linkify( params, options ) {
-  let textToLinkify      = Ember.Handlebars.Utils.escapeExpression(params[0]);
-  const sharedAttributes = opts2attrs( options );
+export function linkify(params, options) {
+  let textToLinkify = Ember.Handlebars.Utils.escapeExpression(params[0]);
+  const sharedAttributes = opts2attrs(options);
 
   textToLinkify = textToLinkify.replace(urlRegex(), function (s) {
     let url;
     let displayText = s.trim();
 
-    if(s.trim().match(/^www\./ig)) {
+    if (s.trim().match(/^www\./gi)) {
       if (options && options.defaultScheme) {
         url = options.defaultScheme + '://' + s.trim();
       } else {
@@ -24,8 +24,8 @@ export function linkify( params, options ) {
       url = s.trim();
     }
 
-    if( options && options.urlLength &&  options.urlLength > 0 ) {
-      displayText = shortenUrl( displayText, options.urlLength );
+    if (options && options.urlLength && options.urlLength > 0) {
+      displayText = shortenUrl(displayText, options.urlLength);
     }
 
     return `<a href="${url}"${sharedAttributes}>${displayText}</a>`;
@@ -36,13 +36,13 @@ export function linkify( params, options ) {
 
 export default helper(linkify);
 
-function opts2attrs( options ) {
+function opts2attrs(options) {
   const stringOfAttributes = [''];
 
-  if( typeOf(options) === 'object' ) {
+  if (typeOf(options) === 'object') {
     for (let i = 0; i < ALLOWED_ATTRIBUTE_NAMES.length; i++) {
       const attributeName = ALLOWED_ATTRIBUTE_NAMES[i];
-      if( attributeName in options ) {
+      if (attributeName in options) {
         stringOfAttributes.push(`${attributeName}="${options[attributeName]}"`);
       }
     }
