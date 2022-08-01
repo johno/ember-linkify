@@ -4,6 +4,15 @@ Linkify URLs in an Ember app with a helper that uses a tested
 [url-regex](https://github.com/kevva/url-regex) and Handlebars `Utils.escapeExpression`
 to ensure links are safe.
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v12 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
@@ -58,28 +67,7 @@ For instance, the following will ensure that the `https` scheme is used for the 
 
 ## Development
 
-### Installation
-
-* `git clone` this repository
-* `cd my-addon`
-* `npm install`
-
-### Running
-
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-### Building
-
-* `ember build`
-
-For more information on using `ember-cli`, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## License
 
