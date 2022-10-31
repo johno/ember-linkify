@@ -2,7 +2,7 @@
 
 <h2 id="title">Linkify</h2>
 
-{{textarea value=text placeholder='Enter some text with a url'}} <br>
-{{linkify text }}
+<Textarea @value={{this.text}} aria-label="Enter text to linkify" placeholder="Enter some text with a url"s /> <br>
+{{linkify this.text}}
 
 {{outlet}}
