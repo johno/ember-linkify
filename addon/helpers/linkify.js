@@ -1,6 +1,6 @@
 import { typeOf } from '@ember/utils';
 import { helper } from '@ember/component/helper';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 import Ember from 'ember';
 import { urlRegex, shortenUrl } from 'ember-linkify/utils/url-regex';
 
