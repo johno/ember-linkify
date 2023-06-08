@@ -168,3 +168,13 @@ test('it should properly handle fragments without leading slashes', function (as
     'My link: <a href="http://some.website.com#fragment">http://some.website.com#fragment</a>'
   );
 });
+
+test('it should properly handle newlines', function(assert) {
+  var result = linkify(['My link: http://some.website.com/\n\nNext line'])
+    .toString()
+    .trim();
+  assert.equal(
+    result,
+    'My link: <a href="http://some.website.com/">http://some.website.com/</a>\n\nNext line'
+  );
+})
